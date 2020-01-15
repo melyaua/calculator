@@ -58,7 +58,8 @@ expensesBtn.addEventListener('click', function() {
             i--;
         }
     }
-    expensesValue.textContent = sum;
+    expensesValue.textContent = +sum;
+    appData.expenses = +sum;
 });
 
 optionalExpensesBtn.addEventListener('click', function () {
@@ -70,8 +71,9 @@ optionalExpensesBtn.addEventListener('click', function () {
 })
 
 countBtn.addEventListener('click', function () {
-    if(appData.budget != undefined) {
-        appData.moneyPerDay = (appData.budget - sum) / 30;
+    console.log(appData);
+    if(appData.budget !== undefined) {
+        appData.moneyPerDay = (appData.budget - appData.expenses) / 30;
         dayBudgetValue.textContent = appData.moneyPerDay;
         if (appData.moneyPerDay < 100) {
             levelValue.textContent = "Это минимальный уровень достатка!";
@@ -136,3 +138,5 @@ let appData = {
     savings: false,
     
 };
+
+
